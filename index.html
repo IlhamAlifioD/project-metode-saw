@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+     <link rel="stylesheet" href="./src/style/style.css">
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+     <title>Metode SAW</title>
+</head>
+
+<body>
+     <h1>Perhitungan Metode SAW</h1>
+     <form id="inputForm">
+          <h3>Input Bobot dan Tipe Kriteria</h3>
+          <div id="criteriaInputs">
+               <div>
+                    <label>Kriteria 1:</label>
+                    <input type="number" min="0" step="0.01" id="weight-1" required placeholder="Bobot">
+                    <select id="type1" required>
+                         <option value="benefit">Benefit</option>
+                         <option value="cost">Cost</option>
+                    </select>
+               </div>
+               <div>
+                    <label>Kriteria 2:</label>
+                    <input type="number" min="0" step="0.01" id="weight-2" required placeholder="Bobot">
+                    <select id="type2" required>
+                         <option value="benefit">Benefit</option>
+                         <option value="cost">Cost</option>
+                    </select>
+               </div>
+               <div>
+                    <label>Kriteria 3:</label>
+                    <input type="number" min="0" step="0.01" id="weight-3" required placeholder="Bobot">
+                    <select id="type3" required>
+                         <option value="benefit">Benefit</option>
+                         <option value="cost">Cost</option>
+                    </select>
+               </div>
+               <div>
+                    <label>Kriteria 4:</label>
+                    <input type="number" min="0" step="0.01" id="weight-4" required placeholder="Bobot">
+                    <select id="type4" required>
+                         <option value="benefit">Benefit</option>
+                         <option value="cost">Cost</option>
+                    </select>
+               </div>
+               <div>
+                    <label>Kriteria 5:</label>
+                    <input type="number" min="0" step="0.01" id="weight-5" required placeholder="Bobot">
+                    <select id="type5" required>
+                         <option value="benefit">Benefit</option>
+                         <option value="cost">Cost</option>
+                    </select>
+               </div>
+          </div>
+          <h3>Input Data Alternatif</h3>
+          <table>
+               <thead>
+                    <tr>
+                         <th>Alternatif</th>
+                         <th>Kriteria 1</th>
+                         <th>Kriteria 2</th>
+                         <th>Kriteria 3</th>
+                         <th>Kriteria 4</th>
+                         <th>Kriteria 5</th>
+                    </tr>
+               </thead>
+               <tbody id="alternatives">
+                    <tr>
+                         <td>A1</td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                    </tr>
+                    <tr>
+                         <td>A2</td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                    </tr>
+                    <tr>
+                         <td>A3</td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                    </tr>
+                    <tr>
+                         <td>A4</td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                    </tr>
+                    <tr>
+                         <td>A5</td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                         <td><input type="number" min="0" required></td>
+                    </tr>
+               </tbody>
+          </table>
+          <div>
+               <label>Angka dibelakang koma:</label>
+               <input type="number" min="1" max="6" id="fractionDigits" required placeholder="1 sampai 6">
+          </div>
+          <button type="button" onclick="calculateSAW()">Hitung</button>
+     </form>
+     <h3>Tabel Normalisasi</h3>
+     <table id="normalizationTable">
+          <thead>
+               <tr>
+                    <th>Alternatif</th>
+                    <th>Kriteria 1</th>
+                    <th>Kriteria 2</th>
+                    <th>Kriteria 3</th>
+                    <th>Kriteria 4</th>
+                    <th>Kriteria 5</th>
+               </tr>
+          </thead>
+          <tbody></tbody>
+     </table>
+     <h3>Tabel Peringkat</h3>
+     <table id="rankingTable">
+          <thead>
+               <tr>
+                    <th>Alternatif</th>
+                    <th>Total Skor</th>
+               </tr>
+          </thead>
+          <tbody></tbody>
+     </table>
+     <script src="./src/script/main.js"></script>
+</body>
+
+</html>
