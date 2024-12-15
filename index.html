@@ -17,7 +17,7 @@
 
 <body>
      <h1>Perhitungan Metode SAW</h1>
-     <form id="inputForm">
+     <form id="decomposition-form">
           <h3>Input Bobot dan Tipe Kriteria</h3>
           <div id="criteriaInputs">
                <div>
@@ -120,7 +120,7 @@
                <label>Angka dibelakang koma:</label>
                <input type="number" min="1" max="6" id="fractionDigits" required placeholder="1 sampai 6">
           </div>
-          <button type="button" id="calculate-btn">Hitung</button>
+          <button type="submit" id="calculate-btn">Hitung</button>
      </form>
      <h3>Tabel Normalisasi</h3>
      <table id="normalizationTable">
@@ -146,7 +146,7 @@
           </thead>
           <tbody></tbody>
      </table>
-     <script src="./src/script/main.js"></script>
+     <script type="module" src="./src/script/main.js"></script>
 </body>
 
 </html>
