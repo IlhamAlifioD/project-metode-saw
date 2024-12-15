@@ -24,5 +24,29 @@ decompositionForm.addEventListener("submit", (event) => {
      );
      fractionDigits = fractionDigitsInput || 3;        // ? Jika tidak ada input, maka menggunakan nilai default
 
+     if (!validateInput(weights, alternatives, fractionDigits)) {
+          return;
+     }
+
      calculateSAW(weights, types, alternatives, fractionDigits);
 })
+
+
+function validateInput(weights, alternatives, fractionDigits) {
+     if (weights.some(weight => isNaN(weight) || weight === 0))  {
+          alert("Harap isi semua bobot kriteria dengan bilangan asli yang lebih besar dari angka 0!");
+          return false;
+     }
+
+     if (alternatives.some((alt) => alt.some(value => isNaN(value) || value === 0))) {
+          alert("Harap isi semua nilai alternatif dengan bilangan asli yang lebih besar dari 0!");
+          return false;
+     }
+
+     if (isNaN(fractionDigits)) {
+          alert("Harap isi jumlah digit desimal dengan bilangan bulat 1 hingga 6!");
+          return false;
+     }
+
+     return true;
+}
