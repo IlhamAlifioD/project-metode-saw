@@ -15,15 +15,13 @@ function calculateSAW(weights, types, alternatives, fractionDigits) {
                     );
           }
 
-	const normalizedTableBody = document.querySelector("#normalizationTable tbody");
-          normalizedTableBody.innerHTML = alternatives.map((_, i) => `
-               <tr>
-                    <td>A${i + 1}</td>
-                    ${normalizedAlternatives.map(
-                         (row) => `<td>${row[i].toFixed(fractionDigits)} </td>`
-                    ).join("")}
-               </tr>
-          `).join("");
+     const normalizationTableContainer = document.querySelector("#normalization-table-container");
+          normalizationTableContainer.innerHTML = renderNormalizationTable(
+               "Tabel Normalisasi", 
+               weights.length, 
+               normalizedAlternatives, 
+               fractionDigits,
+          );
 
      // ? Perhitungan Skor Hasil Normalisasi
      const finalScores = alternatives.map((_, alternativeIndex) =>
@@ -36,20 +34,70 @@ function calculateSAW(weights, types, alternatives, fractionDigits) {
 		.map((score, i) => ({ alternative: `A${i + 1}`, score }))
 		.sort((a, b) => b.score - a.score);
 
-	const rankingTableBody = document.querySelector("#rankingTable tbody");
-          rankingTableBody.innerHTML = ranked.map(
-               ({ alternative, score }) => `
-                    <tr>
-                         <td>${alternative}</td>
-                         <td>${score.toFixed(fractionDigits)}</td>
-                    </tr>
-               `
-		).join("");
-
+     const rankingTableContainer = document.querySelector("#ranking-table-container");
+          rankingTableContainer.innerHTML = renderRankingTable(
+               "Tabel Ranking", 
+               ranked, 
+               fractionDigits,
+          );
 
      // ? Debugging
      console.log("Tabel Normalisasi:", normalizedTableBody.innerHTML);
      console.log("Tabel Ranking:", rankingTableBody.innerHTML);
+}
+
+function renderNormalizationTable(title, numCriteria, normalizedAlternatives, fractionDigits) {
+     const headers = Array.from(
+          { length: numCriteria }, (_, i) => `
+               <th>Kriteria ${i + 1}</th>
+          `
+     ).join("");
+
+     const rows = normalizedAlternatives[0].map((_, i) => `
+          <tr>
+               <td>A${i + 1}</td>
+               ${normalizedAlternatives.map(row => `<td>${row[i].toFixed(fractionDigits)}</td>`).join("")}
+          </tr>`
+     ).join("");
+
+     return `
+          <h3>${title}</h3>
+          <table>
+               <thead>
+                    <tr>
+                         <th>Alternatif</th>
+                         ${headers}
+                    </tr>
+               </thead>
+               <tbody>
+                    ${rows}
+               </tbody>
+          </table>
+     `;
+}
+
+function renderRankingTable(title, ranked, fractionDigits) {
+     const rows = ranked.map(({ alternative, score }) => `
+          <tr>
+               <td>${alternative}</td>
+               <td>${score.toFixed(fractionDigits)}</td>
+          </tr>`
+     ).join("");
+
+     return `
+          <h3>${title}</h3>
+          <table>
+               <thead>
+                    <tr>
+                         <th>Alternatif</th>
+                         <th>Total Skor</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    ${rows}
+               </tbody>
+          </table>
+     `;
 }
 
 export default calculateSAW;
