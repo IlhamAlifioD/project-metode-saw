@@ -10,84 +10,90 @@
 
      <link rel="preconnect" href="https://fonts.googleapis.com">
      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+          rel="stylesheet">
 
      <title>Metode SAW</title>
 </head>
 
 <body>
-     <h1>Perhitungan Metode SAW</h1>
-     <form id="decomposition-form">
-          <h3>Input Bobot dan Tipe Kriteria</h3>
-          <div id="criteria-input-group" class="criteria-container">
-               <div class="criterion-container">
-                    <label>Kriteria 1:</label>
-                    <input type="number" min="0" step="0.01" class="weight" required placeholder="Bobot">
-                    <select class="type" required>
-                         <option value="benefit">Benefit</option>
-                         <option value="cost">Cost</option>
-                    </select>
+     <div class="form-container">
+          <h1>Perhitungan Metode SAW</h1>
+          <form id="decomposition-form">
+               <h3>Input Bobot dan Tipe Kriteria</h3>
+               <div id="criteria-input-group" class="criteria-container">
+                    <div class="criterion-container">
+                         <label>Kriteria 1:</label>
+                         <input type="number" min="0" step="0.01" class="weight" required placeholder="Bobot">
+                         <select class="type" required>
+                              <option value="benefit">Benefit</option>
+                              <option value="cost">Cost</option>
+                         </select>
+                    </div>
+                    <div class="criterion-container">
+                         <label>Kriteria 2:</label>
+                         <input type="number" min="0" step="0.01" class="weight" required placeholder="Bobot">
+                         <select class="type" required>
+                              <option value="benefit">Benefit</option>
+                              <option value="cost">Cost</option>
+                         </select>
+                    </div>
+                    <div class="criterion-container">
+                         <label>Kriteria 3:</label>
+                         <input type="number" min="0" step="0.01" class="weight" required placeholder="Bobot">
+                         <select class="type" required>
+                              <option value="benefit">Benefit</option>
+                              <option value="cost">Cost</option>
+                         </select>
+                    </div>
                </div>
-               <div class="criterion-container">
-                    <label>Kriteria 2:</label>
-                    <input type="number" min="0" step="0.01" class="weight" required placeholder="Bobot">
-                    <select class="type" required>
-                         <option value="benefit">Benefit</option>
-                         <option value="cost">Cost</option>
-                    </select>
+               <button type="button" id="add-criterion">Tambah</button>
+               <button type="button" id="remove-criterion" class="remove-criterion-btn">Hapus</button>
+               <div class="table-container">
+                    <h3>Input Data Alternatif</h3>
+                    <table>
+                         <thead id="alternatives-header">
+                              <tr>
+                                   <th>Alternatif</th>
+                                   <th>Kriteria 1</th>
+                                   <th>Kriteria 2</th>
+                                   <th>Kriteria 3</th>
+                              </tr>
+                         </thead>
+                         <tbody id="alternatives-container">
+                              <tr>
+                                   <td>A1</td>
+                                   <td><input type="number" min="0" class="alternative" required></td>
+                                   <td><input type="number" min="0" class="alternative" required></td>
+                                   <td><input type="number" min="0" class="alternative" required></td>
+                              </tr>
+                              <tr>
+                                   <td>A2</td>
+                                   <td><input type="number" min="0" class="alternative" required></td>
+                                   <td><input type="number" min="0" class="alternative" required></td>
+                                   <td><input type="number" min="0" class="alternative" required></td>
+                              </tr>
+                              <tr>
+                                   <td>A3</td>
+                                   <td><input type="number" min="0" class="alternative" required></td>
+                                   <td><input type="number" min="0" class="alternative" required></td>
+                                   <td><input type="number" min="0" class="alternative" required></td>
+                              </tr>
+                         </tbody>
+                    </table>
                </div>
-               <div class="criterion-container">
-                    <label>Kriteria 3:</label>
-                    <input type="number" min="0" step="0.01" class="weight" required placeholder="Bobot">
-                    <select class="type" required>
-                         <option value="benefit">Benefit</option>
-                         <option value="cost">Cost</option>
-                    </select>
+               <div class="alternative-actions-btn">
+                    <button type="button" id="add-alternative">Tambah</button>
+                    <button type="button" id="remove-alternative" class="remove-alternative-btn">Hapus</button>
                </div>
-          </div>
-          <button type="button" id="add-criterion">Tambah</button>
-          <button type="button" id="remove-criterion">Hapus</button>
-          <h3>Input Data Alternatif</h3>
-          <table>
-               <thead id="alternatives-header">
-                    <tr>
-                         <th>Alternatif</th>
-                         <th>Kriteria 1</th>
-                         <th>Kriteria 2</th>
-                         <th>Kriteria 3</th>
-                    </tr>
-               </thead>
-               <tbody id="alternatives-container">
-                    <tr>
-                         <td>A1</td>
-                         <td><input type="number" min="0" class="alternative" required></td>
-                         <td><input type="number" min="0" class="alternative" required></td>
-                         <td><input type="number" min="0" class="alternative" required></td>
-                    </tr>
-                    <tr>
-                         <td>A2</td>
-                         <td><input type="number" min="0" class="alternative" required></td>
-                         <td><input type="number" min="0" class="alternative" required></td>
-                         <td><input type="number" min="0" class="alternative" required></td>
-                    </tr>
-                    <tr>
-                         <td>A3</td>
-                         <td><input type="number" min="0" class="alternative" required></td>
-                         <td><input type="number" min="0" class="alternative" required></td>
-                         <td><input type="number" min="0" class="alternative" required></td>
-                    </tr>
-               </tbody>
-          </table>
-          <div class="alternative-actions-btn">
-               <button type="button" id="add-alternative">Tambah</button>
-               <button type="button" id="remove-alternative">Hapus</button>
-          </div>
-          <div>
-               <label>Angka dibelakang koma:</label>
-               <input type="number" min="1" max="6" id="fractionDigits" required placeholder="1 sampai 6">
-          </div>
-          <button type="submit" id="calculate-btn">Hitung</button>
-     </form>
+               <div>
+                    <label>Angka dibelakang koma:</label>
+                    <input type="number" min="1" max="6" id="fractionDigits" required placeholder="1 sampai 6">
+               </div>
+               <button type="submit" id="calculate-btn">Hitung</button>
+          </form>
+
+     </div>
      <div class="result-container">
           <div id="normalization-table-container"></div>
           <div id="ranking-table-container"></div>

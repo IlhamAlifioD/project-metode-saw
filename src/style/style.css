@@ -1,18 +1,262 @@
-table {
-     border-collapse: collapse;
-     width: 100%;
+* {
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+     font-family: 'Montserrat', sans-serif;
+}
+
+/* Body Styling */
+body {
+     background-color: #f4f7fc;
+     color: #333;
+     padding: 20px;
+}
+
+.form-container {
+     display: flex;
+     flex-flow: column;
+     align-items: center;
+     justify-content: center;
+}
+
+.form-container h1 {
+     justify-content: center;
+}
+
+/* Header Styling */
+header {
+     text-align: center;
      margin-bottom: 20px;
 }
 
-table, th, td {
-     border: 1px solid black;
+header h1 {
+     font-size: 2.5em;
+     font-weight: 700;
+     color: #2a3d66;
+     margin-bottom: 10px;
 }
 
-h1, label, th, td {
-     font-family: "Montserrat", sans-serif;
+/* Form Styling */
+form {
+     background-color: #ffffff;
+     border-radius: 8px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+     padding: 20px;
+     width: 90%;
+     margin: 0 auto;
 }
 
-th, td {
+/* Criteria Section */
+.criteria-section,
+.alternative-section {
+     margin-bottom: 30px;
+}
+
+h3 {
+     font-size: 1.4em;
+     color: #2a3d66;
+     margin-bottom: 15px;
+}
+
+/* Input Containers */
+.input-group,
+.criteria-wrapper {
+     display: flex;
+     flex-wrap: wrap;
+     gap: 20px;
+}
+
+.criterion-container {
+     display: flex;
+     align-items: center;
+     gap: 20px;
+     /* Jarak antar elemen di dalam kriteria */
+     width: 100%;
+}
+
+@media screen and (max-width: 768px) {
+     .criterion-container {
+          flex-flow: column;
+     }
+
+     .criterion-container label {
+          width: 100%;
+     }
+}
+
+/* Label untuk Kriteria */
+.criterion-label {
+     font-size: 1.1em;
+     color: #333;
+}
+
+/* Menjaga Bobot dan Benefit/Cost Sejajar Secara Horizontal */
+.criterion-container label,
+.criterion-container input,
+.criterion-container select {
+     display: inline-block;
+     vertical-align: middle;
+}
+
+/* Styling untuk input dan select di kriteria */
+.input-group input,
+.input-group select,
+.criteria-container input,
+.criteria-container select {
+     padding: 8px 12px;
+     font-size: 1em;
+     border: 1px solid #ddd;
+     border-radius: 6px;
+     width: 150px;
+     transition: border-color 0.3s ease;
+}
+
+.input-group select,
+.criteria-container select {
+     width: auto;
+     /* Membiarkan select menyesuaikan ukuran */
+}
+
+input[type="number"] {
+     width: 200px;
+}
+
+input[type="number"]:focus,
+select:focus {
+     border-color: #5d72e0;
+     outline: none;
+}
+
+/* Buttons */
+button {
+     padding: 10px 20px;
+     background-color: #5d72e0;
+     color: white;
+     border: none;
+     border-radius: 6px;
+     font-size: 1em;
+     cursor: pointer;
+     transition: background-color 0.3s ease;
+     margin-top: 10px;
+}
+
+button:hover {
+     background-color: #4a61c4;
+}
+
+button:disabled {
+     background-color: #cccccc;
+}
+
+.remove-criterion-btn,
+.remove-alternative-btn {
+     background-color: red;
+}
+
+/* Table Styling */
+.table-container {
+     overflow-x: scroll;
+}
+
+table {
+     width: 100%;
+     border-collapse: collapse;
+     margin-top: 20px;
+}
+
+table th,
+table td {
+     padding: 12px 15px;
+     border: 1px solid #ddd;
+     text-align: center;
+     font-size: 1em;
+}
+
+table th {
+     background-color: #f1f1f1;
+     font-weight: 600;
+     color: #5d72e0;
+}
+
+table td {
+     background-color: #f9f9f9;
+}
+
+table input[type="number"] {
+     width: 100px;
+     text-align: center;
+     font-size: 1em;
+     padding: 5px;
+     border: 1px solid #ddd;
+     border-radius: 6px;
+     transition: border-color 0.3s ease;
+}
+
+table input[type="number"]:focus {
+     border-color: #5d72e0;
+}
+
+/* Result Section */
+.result-container {
+     margin-top: 40px;
+     display: flex;
+     justify-content: space-between;
+     gap: 20px;
+}
+
+/* Fraction Input */
+.fraction-input input {
+     width: 80px;
      text-align: center;
      padding: 8px;
+     font-size: 1em;
+     border-radius: 6px;
+     border: 1px solid #ddd;
+     transition: border-color 0.3s ease;
+}
+
+.fraction-input input:focus {
+     border-color: #5d72e0;
+}
+
+.fraction-input label {
+     font-size: 1.2em;
+     margin-right: 10px;
+     color: #333;
+}
+
+/* Alternative Button Container */
+.alternative-actions-btn {
+     display: flex;
+     justify-content: space-between;
+     gap: 10px;
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+     .form {
+          max-width: 60%;
+     }
+
+     .criteria-wrapper,
+     .input-group {
+          flex-direction: column;
+          align-items: flex-start;
+     }
+
+     .input-group input,
+     .input-group select,
+     .criteria-container input,
+     .criteria-container select {
+          width: 100%;
+     }
+
+     table th,
+     table td {
+          font-size: 0.9em;
+     }
+
+     .fraction-input {
+          flex-direction: column;
+     }
 }
