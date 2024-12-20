@@ -17,6 +17,7 @@ body {
      flex-flow: column;
      align-items: center;
      justify-content: center;
+     gap: 1rem;
 }
 
 .form-container h1 {
@@ -37,7 +38,7 @@ header h1 {
 }
 
 /* Form Styling */
-form {
+.decomposition-form {
      background-color: #ffffff;
      border-radius: 8px;
      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -57,6 +58,17 @@ h3 {
      color: #2a3d66;
      margin-bottom: 15px;
 }
+
+/* .criteria-container {
+     display: flex;
+     flex-flow: column nowrap;
+     gap: 2rem;
+
+     align-self: center;
+     justify-content: center;
+     align-items: center;
+} */
+
 
 /* Input Containers */
 .input-group,
@@ -128,10 +140,17 @@ select:focus {
 }
 
 /* Buttons */
+.btn-container {
+     display: flex;
+     flex-flow: row nowrap;
+     gap: 1rem;
+     padding: 1rem 0;
+     border: 1px solid red;
+
+}
+
 button {
      padding: 10px 20px;
-     background-color: #5d72e0;
-     color: white;
      border: none;
      border-radius: 6px;
      font-size: 1em;
@@ -140,7 +159,17 @@ button {
      margin-top: 10px;
 }
 
-button:hover {
+.add-btn {
+     background-color: #5d72e0;
+     color: white;
+}
+
+.remove-btn {
+     background-color: red;
+     color: white;
+}
+
+/* button:hover {
      background-color: #4a61c4;
 }
 
@@ -151,7 +180,7 @@ button:disabled {
 .remove-criterion-btn,
 .remove-alternative-btn {
      background-color: red;
-}
+} */
 
 /* Table Styling */
 .table-container {
