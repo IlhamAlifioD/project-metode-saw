@@ -19,12 +19,11 @@
 <body>
      <div class="form-container">
           <h1>Perhitungan Metode SAW</h1>
-          <form class="decomposition-form id="decomposition-form">
-               <h3>Input Bobot dan Tipe Kriteria</h3>
+          <form id="decomposition-form" class="decomposition-form">
                <div id="criteria-input-group" class="criteria-container">
+                    <h2>Input Bobot dan Tipe Kriteria</h2>
                     <div class="criterion-container">
                          <label>Kriteria 1:</label>
-                         <input type="text" class="criterion-name" required placeholder="Nama Kriteria">
                          <input type="number" min="0" step="0.01" class="weight" required placeholder="Bobot">
                          <select class="type" required>
                               <option value="benefit">Benefit</option>
@@ -33,7 +32,6 @@
                     </div>
                     <div class="criterion-container">
                          <label>Kriteria 2:</label>
-                         <input type="text" class="criterion-name" required placeholder="Nama Kriteria">
                          <input type="number" min="0" step="0.01" class="weight" required placeholder="Bobot">
                          <select class="type" required>
                               <option value="benefit">Benefit</option>
@@ -42,19 +40,20 @@
                     </div>
                     <div class="criterion-container">
                          <label>Kriteria 3:</label>
-                         <input type="text" class="criterion-name" required placeholder="Nama Kriteria">
                          <input type="number" min="0" step="0.01" class="weight" required placeholder="Bobot">
                          <select class="type" required>
                               <option value="benefit">Benefit</option>
                               <option value="cost">Cost</option>
                          </select>
                     </div>
+               </div>
                <div class="btn-container">
                     <button type="button" id="add-criterion" class="add-btn">Tambah</button>
                     <button type="button" id="remove-criterion" class="remove-btn">Hapus</button>
                </div>
-               <div class="table-container">
-                    <h3>Input Data Alternatif</h3>
+               <hr>
+               <div class="alternative-table-container">
+                    <h2>Input Data Alternatif</h2>
                     <table>
                          <thead id="alternatives-header">
                               <tr>
@@ -90,17 +89,18 @@
                     <button type="button" id="add-alternative" class="add-btn">Tambah</button>
                     <button type="button" id="remove-alternative" class="remove-btn">Hapus</button>
                </div>
-               <div>
+               <div class="fraction-digits-container">
                     <label>Angka dibelakang koma:</label>
                     <input type="number" min="1" max="6" id="fractionDigits" required placeholder="1 sampai 6">
                </div>
-               <button type="submit" id="calculate-btn">Hitung</button>
+               <button type="submit" id="calculate-btn" class="submit-btn">Hitung</button>
           </form>
-
      </div>
      <div class="result-container">
-          <div id="normalization-table-container"></div>
-          <div id="ranking-table-container"></div>
+          <div class="result-wrapper hidden">     
+               <div id="normalization-table" class="normalization-table"></div>
+               <div id="ranking-table" class="ranking-table"></div>
+          </div>
      </div>
      <script type="module" src="./src/script/main.js"></script>
 </body>

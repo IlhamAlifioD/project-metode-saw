@@ -2,13 +2,14 @@ import calculateSAW from "./utils.js";
 
 // ? Form
 const decompositionForm = document.querySelector("#decomposition-form");
-
-// ? Kriteria
 const criteriaInputGroup = document.querySelector("#criteria-input-group");
 
 // ? Table
 const alternativesHeader = document.querySelector("#alternatives-header tr");
 const alternativesContainer = document.querySelector("#alternatives-container");
+
+// ? Result
+const resultWrapper= document.querySelector(".result-wrapper");
 
 // ? Button
 const createCriterionButton = document.querySelector("#add-criterion");
@@ -29,6 +30,7 @@ decompositionForm.addEventListener("submit", (event) => {
      const rows = document.querySelectorAll("#alternatives-container tr");
      const fractionDigitsInput = parseInt(document.querySelector("#fractionDigits").value, 10);
 
+     // ? Mengambil semua nilai input
      weights = Array.from(weightInputs).map((input) => parseFloat(input.value) || 0);
      types = Array.from(typeInputs).map((input) => input.value);
      alternatives = Array.from(rows).map((row) =>
@@ -36,13 +38,14 @@ decompositionForm.addEventListener("submit", (event) => {
                (cell) => parseFloat(cell.value) || 0,
           )
      );
-     fractionDigits = fractionDigitsInput || 3;        // ? Jika tidak ada input, maka menggunakan nilai default
-
+     fractionDigits = fractionDigitsInput || 3;
      if (!validateInput(weights, alternatives, fractionDigits)) {
           return;
      }
 
      calculateSAW(weights, types, alternatives, fractionDigits);
+
+     resultWrapper.classList.remove("hidden");
 })
 
 createCriterionButton.addEventListener("click", () => {

@@ -15,8 +15,8 @@ function calculateSAW(weights, types, alternatives, fractionDigits) {
                     );
           }
 
-     const normalizationTableContainer = document.querySelector("#normalization-table-container");
-          normalizationTableContainer.innerHTML = renderNormalizationTable(
+     const normalizationTable = document.querySelector("#normalization-table");
+          normalizationTable.innerHTML = renderNormalizationTable(
                "Tabel Normalisasi", 
                weights.length, 
                normalizedAlternatives, 
@@ -34,16 +34,16 @@ function calculateSAW(weights, types, alternatives, fractionDigits) {
 		.map((score, i) => ({ alternative: `A${i + 1}`, score }))
 		.sort((a, b) => b.score - a.score);
 
-     const rankingTableContainer = document.querySelector("#ranking-table-container");
-          rankingTableContainer.innerHTML = renderRankingTable(
+     const rankingTable = document.querySelector("#ranking-table");
+          rankingTable.innerHTML = renderRankingTable(
                "Tabel Ranking", 
                ranked, 
                fractionDigits,
           );
 
      // ? Debugging
-     console.log("Tabel Normalisasi:", normalizedTableBody.innerHTML);
-     console.log("Tabel Ranking:", rankingTableBody.innerHTML);
+     console.log("Tabel Normalisasi:", normalizationTable.innerHTML);
+     console.log("Tabel Ranking:", rankingTable.innerHTML);
 }
 
 function renderNormalizationTable(title, numCriteria, normalizedAlternatives, fractionDigits) {
@@ -61,7 +61,7 @@ function renderNormalizationTable(title, numCriteria, normalizedAlternatives, fr
      ).join("");
 
      return `
-          <h3>${title}</h3>
+          <h2>${title}</h2>
           <table>
                <thead>
                     <tr>
@@ -85,7 +85,7 @@ function renderRankingTable(title, ranked, fractionDigits) {
      ).join("");
 
      return `
-          <h3>${title}</h3>
+          <h2>${title}</h2>
           <table>
                <thead>
                     <tr>
