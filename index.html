@@ -55,18 +55,38 @@
                     <button type="button" id="remove-criterion" class="remove-btn">Hapus</button>
                </div>
                <hr>
-               <div class="alternative-table-container">
+               <div id="alternatives-input-group" class="alternatives-container">
+                    <h2>Input Nama Alternatif</h2>
+                    <div class="alternative-container">
+                         <label>Alternatif 1:</label>
+                         <input type="text" class="alternative-name" required placeholder="Nama Alternatif">
+                    </div>
+                    <div class="alternative-container">
+                         <label>Alternatif 2:</label>
+                         <input type="text" class="alternative-name" required placeholder="Nama Alternatif">
+                    </div>
+                    <div class="alternative-container">
+                         <label>Alternatif 3:</label>
+                         <input type="text" class="alternative-name" required placeholder="Nama Alternatif">
+                    </div>
+               </div>
+               <div class="btn-container">
+                    <button type="button" id="add-alternative" class="add-btn">Tambah</button>
+                    <button type="button" id="remove-alternative" class="remove-btn">Hapus</button>
+               </div>
+               <hr>
+               <div class="agregation-table-container">
                     <h2>Input Data Alternatif</h2>
                     <table>
-                         <thead id="alternatives-header">
+                         <thead id="agregation-table-header">
                               <tr>
                                    <th>Alternatif</th>
-                                   <th>Kriteria 1</th>
-                                   <th>Kriteria 2</th>
-                                   <th>Kriteria 3</th>
+                                   <th>C1</th>
+                                   <th>C2</th>
+                                   <th>C3</th>
                               </tr>
                          </thead>
-                         <tbody id="alternatives-container">
+                         <tbody id="agregation-table-body">
                               <tr>
                                    <td>A1</td>
                                    <td><input type="number" min="0" class="alternative" required></td>
@@ -87,10 +107,6 @@
                               </tr>
                          </tbody>
                     </table>
-               </div>
-               <div class="btn-container">
-                    <button type="button" id="add-alternative" class="add-btn">Tambah</button>
-                    <button type="button" id="remove-alternative" class="remove-btn">Hapus</button>
                </div>
                <div class="fraction-digits-container">
                     <label>Angka dibelakang koma:</label>

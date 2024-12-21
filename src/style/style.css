@@ -56,12 +56,13 @@ header h1 {
      margin: 0 auto;
 }
 
-.criteria-section,
+/* .criteria-section,
 .alternative-section {
      margin-bottom: 30px;
-}
+} */
 
-.criteria-container {
+.criteria-container,
+.alternatives-container {
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -69,21 +70,28 @@ header h1 {
      font-weight: bold;
 }
 
-.criterion-container {
+.criterion-container,
+.alternative-container {
      display: flex;
      align-items: center;
      gap: 20px;
      width: 100%;
 }
 
-.criterion-label {
+/* .criterion-label {
      font-size: 1.1em;
      color: #333;
-}
+} */
 
 .criterion-container label,
 .criterion-container input,
 .criterion-container select {
+     display: inline-block;
+     vertical-align: middle;
+}
+
+.alternatives-container label,
+.alternatives-container input {
      display: inline-block;
      vertical-align: middle;
 }
@@ -95,6 +103,15 @@ header h1 {
      border: 1px solid #ddd;
      border-radius: 6px;
      width: 150px;
+     transition: border-color 0.3s ease;
+}
+
+.alternatives-container input {
+     padding: 8px 12px;
+     font-size: 1em;
+     border: 1px solid #ddd;
+     border-radius: 6px;
+     width: 155px;
      transition: border-color 0.3s ease;
 }
 
@@ -147,7 +164,7 @@ button:hover {
 }
 
 /* Tables Section */
-.alternative-table-container,
+.agregation-table-container,
 .normalization-table,
 .ranking-table {
      overflow-x: auto;
@@ -262,6 +279,11 @@ table input[type="number"]:focus {
           width: 100%;
           font-size: 0.9rem;
      }
+
+     .alternatives-container input {
+          width: 100%;
+          font-size: 0.9rem;
+     }
 }
 
 /* Tablet */
@@ -279,7 +301,8 @@ table input[type="number"]:focus {
           margin: 0.5rem 0;
      }
 
-     .criterion-container {
+     .criterion-container,
+     .alternative-container {
           flex-direction: column;
           align-items: flex-start;
      }
@@ -288,6 +311,11 @@ table input[type="number"]:focus {
      .criteria-container select {
           width: 100%;
           font-size: 1rem;
+     }
+
+     .alternatives-container input {
+          width: 100%;
+          font-size: 0.9rem;
      }
 
      .table-container {

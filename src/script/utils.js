@@ -1,4 +1,4 @@
-function calculateSAW(criterionNames, weights, types, alternatives, fractionDigits) {
+function calculateSAW(criterionNames, weights, types, alternativeNames, alternatives, fractionDigits) {
      // ? Debugging
      console.log("Bobot:", weights);
      console.log("Tipe:", types);
@@ -20,6 +20,7 @@ function calculateSAW(criterionNames, weights, types, alternatives, fractionDigi
                "Tabel Normalisasi",
                criterionNames,
                normalizedAlternatives,
+               alternativeNames,
                fractionDigits,
           );
 
@@ -31,13 +32,13 @@ function calculateSAW(criterionNames, weights, types, alternatives, fractionDigi
 
      // ? Perangkingan
 	const ranked = finalScores
-		.map((score, i) => ({ alternative: `A${i + 1}`, score }))
+		.map((score, i) => ({ alternative: `${alternativeNames[i]}`, score }))
 		.sort((a, b) => b.score - a.score);
 
      const rankingTable = document.querySelector("#ranking-table");
           rankingTable.innerHTML = renderRankingTable(
-               "Tabel Ranking", 
-               ranked, 
+               "Tabel Ranking",
+               ranked,
                fractionDigits,
           );
 
@@ -46,11 +47,11 @@ function calculateSAW(criterionNames, weights, types, alternatives, fractionDigi
      console.log("Tabel Ranking:", rankingTable.innerHTML);
 }
 
-function renderNormalizationTable(title, criterionNames, normalizedAlternatives, fractionDigits) {
+function renderNormalizationTable(title, criterionNames, normalizedAlternatives, alternativeNames, fractionDigits) {
      const headers = criterionNames.map(name => `<th>${name}</th>`).join("");
      const rows = normalizedAlternatives[0].map((_, i) => `
           <tr>
-               <td>A${i + 1}</td>
+               <td>${alternativeNames[i]}</td>
                ${normalizedAlternatives.map(row => `<td>${row[i].toFixed(fractionDigits)}</td>`).join("")}
           </tr>`
      ).join("");
