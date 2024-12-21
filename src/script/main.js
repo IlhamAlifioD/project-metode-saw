@@ -17,6 +17,7 @@ const deleteCriterionButton = document.querySelector("#remove-criterion");
 const createAlternativeButton = document.querySelector("#add-alternative");
 const deleteAlternativeButton = document.querySelector("#remove-alternative");
 
+let criterionNames = [];
 let weights = [];
 let types = [];
 let alternatives = [];
@@ -30,6 +31,10 @@ decompositionForm.addEventListener("submit", (event) => {
      const rows = document.querySelectorAll("#alternatives-container tr");
      const fractionDigitsInput = parseInt(document.querySelector("#fractionDigits").value, 10);
 
+     // ? Mengambil semua input nama kriteria
+     // criteriaNames = Array.from(criterionNames).map((input) => input.value || "Kosong");
+     criterionNames = Array.from(criteriaInputGroup.querySelectorAll(".criterion-name")).map(input => input.value);
+
      // ? Mengambil semua nilai input
      weights = Array.from(weightInputs).map((input) => parseFloat(input.value) || 0);
      types = Array.from(typeInputs).map((input) => input.value);
@@ -39,11 +44,11 @@ decompositionForm.addEventListener("submit", (event) => {
           )
      );
      fractionDigits = fractionDigitsInput || 3;
-     if (!validateInput(weights, alternatives, fractionDigits)) {
-          return;
-     }
-
-     calculateSAW(weights, types, alternatives, fractionDigits);
+          if (!validateInput(weights, alternatives, fractionDigits)) {
+               return;
+          }
+     console.log("Nama kriteria:", criterionNames);
+     calculateSAW(criterionNames, weights, types, alternatives, fractionDigits);
 
      resultWrapper.classList.remove("hidden");
 })
@@ -55,6 +60,16 @@ createCriterionButton.addEventListener("click", () => {
 
                const label = document.createElement("label");
                     label.textContent = `Kriteria ${criterionIndex}:`;
+               
+               const criterionName = document.createElement("input");
+                    criterionName.classList.add("criterion-name");
+                    criterionName.type = "text";
+                    criterionName.required = true;
+                    criterionName.placeholder = "Nama Kriteria";
+
+                    criterionName.addEventListener("input", () => {
+                         criterionNames[criterionIndex - 1] = criterionName.value;
+                    });
 
                const weightInput = document.createElement("input");
                     weightInput.type = "number";
@@ -76,12 +91,12 @@ createCriterionButton.addEventListener("click", () => {
                          optionCost.value = "cost";
                          optionCost.textContent = "Cost";
                select.append(optionBenefit, optionCost);
-          criterionContainer.append(label, weightInput, select);
+          criterionContainer.append(label, criterionName, weightInput, select);
      criteriaInputGroup.appendChild(criterionContainer);
 
      // ? Membuat header kriteria baru pada tabel
      const createTableHeader = document.createElement("th");
-          createTableHeader.textContent = `Kriteria ${criterionIndex}`;
+          createTableHeader.textContent = `K ${criterionIndex}`;
           alternativesHeader.appendChild(createTableHeader);
 
      // ? Menambah kolom pada tabel untuk setiap alternatif

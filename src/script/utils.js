@@ -1,4 +1,4 @@
-function calculateSAW(weights, types, alternatives, fractionDigits) {
+function calculateSAW(criterionNames, weights, types, alternatives, fractionDigits) {
      // ? Debugging
      console.log("Bobot:", weights);
      console.log("Tipe:", types);
@@ -17,9 +17,9 @@ function calculateSAW(weights, types, alternatives, fractionDigits) {
 
      const normalizationTable = document.querySelector("#normalization-table");
           normalizationTable.innerHTML = renderNormalizationTable(
-               "Tabel Normalisasi", 
-               weights.length, 
-               normalizedAlternatives, 
+               "Tabel Normalisasi",
+               criterionNames,
+               normalizedAlternatives,
                fractionDigits,
           );
 
@@ -46,13 +46,8 @@ function calculateSAW(weights, types, alternatives, fractionDigits) {
      console.log("Tabel Ranking:", rankingTable.innerHTML);
 }
 
-function renderNormalizationTable(title, numCriteria, normalizedAlternatives, fractionDigits) {
-     const headers = Array.from(
-          { length: numCriteria }, (_, i) => `
-               <th>Kriteria ${i + 1}</th>
-          `
-     ).join("");
-
+function renderNormalizationTable(title, criterionNames, normalizedAlternatives, fractionDigits) {
+     const headers = criterionNames.map(name => `<th>${name}</th>`).join("");
      const rows = normalizedAlternatives[0].map((_, i) => `
           <tr>
                <td>A${i + 1}</td>
